@@ -1,0 +1,5 @@
+{
+    "repository": "git@gitlab.xiaoenai.net:ios/iloving.git",
+    "brach": "develop",
+    "loop_seconds": 60
+}

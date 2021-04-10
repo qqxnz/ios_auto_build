@@ -1,0 +1,9 @@
+function(){
+    var data = execSync('git show');
+    var arr = data.toString().split(' ');
+    if(arr.length  > 2){
+       var arr1 = arr[1].split('\n');
+       return arr1[0];
+    }
+    return ''; 
+}
