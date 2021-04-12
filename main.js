@@ -61,10 +61,11 @@ if(!workspace.exists()){
     var bulidID = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     print('本次打包ID:' + bulidID);
 
-    print('进入工程目录');
+    print('进入工程目录~~');
     process.chdir(workspace.repositoryPath());
 
-    print('拉取代码');
+    print('拉取代码~~~');
+    workspace.fetch();
 
     print('检查是否有新的commit~~~');
     var last = commit.lastCommit();
