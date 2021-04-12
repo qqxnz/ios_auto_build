@@ -5,10 +5,8 @@ var execSync = require('child_process').execSync;
 
 var commit = {};
 
-var file = path.resolve(__dirname ,'../last_build_commit.txt');
-
-
-commit.lastBuildCommit = function(){
+commit.lastBuildCommit = function(name){
+    var file = getFileWithName(name);
     if(fs.existsSync(file)){
         var data = fs.readFileSync(file);
         return data.toString();
@@ -27,7 +25,8 @@ commit.lastCommit = function(){
 }
 
 
-commit.saveLastBuildcommit = function(commit){
+commit.saveLastBuildcommit = function(name,commit){
+    var file = getFileWithName(name);
     if(fs.existsSync(file)){
         fs.unlinkSync(file);
     }
@@ -36,3 +35,12 @@ commit.saveLastBuildcommit = function(commit){
 }
 
 module.exports = commit;
+
+
+function getFileWithName(name){
+    var dir = path.resolve(__dirname ,'../temp/');
+    if(!fs.existsSync(dir)){
+		fs.mkdirSync(dir);
+    }
+   return path.resolve(__dirname ,'../temp/last_build_commit_') + name;
+}

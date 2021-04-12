@@ -69,7 +69,7 @@ if(!workspace.exists()){
 
     print('检查是否有新的commit~~~');
     var last = commit.lastCommit();
-    var lastBuild = commit.lastBuildCommit();
+    var lastBuild = commit.lastBuildCommit(config.fileName);
     if(lastBuild == last){
         print('暂时没有新的commit~~~~');
         return;
@@ -101,8 +101,8 @@ if(!workspace.exists()){
 
     fastlane.on('close', (code) => {
         print(`打包进程退出，退出码 ${code}`);
-        var lastBuildCommit = commit.lastCommit;
-        commit.saveLastBuildcommit(lastBuildCommit);
+        var lastBuildCommit = commit.lastCommit();
+        commit.saveLastBuildcommit(config.fileName,lastBuildCommit);
         lock.unlock(config.fileName);
     });
 
