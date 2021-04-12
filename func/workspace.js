@@ -21,7 +21,7 @@ workspace.exists = function(){
 
 workspace.cloneRepository = function(repository,branch){
     process.chdir(sapceDir);
-    var result = execSync(`git -b ${branch} clone ${repository} ${_spaceName}`);
+    var result = execSync(`git clone ${repository} ${_spaceName} -b ${branch}`);
     console.log(result);
 }
 
