@@ -7,10 +7,10 @@
     */
     "apps" : [
         {
-            "name": "iloving-beta",//程序名称
+            "name": "iloving-inhouse",//程序名称
             "max_memory_restart":"500M",// 监控内存，一旦内存超过设定大小，自动重启
             "script":"./main.js",
-            "args": "-config:iloving-beta",//配置文件,与comfig目录中的json匹配
+            "args": "-config:iloving-inhouse",//配置文件,与comfig目录中的json匹配
             "out_file":"./_logs/_out.log",
             "error_file": "./_logs/_error.log",
             "max_restarts":30 ,
