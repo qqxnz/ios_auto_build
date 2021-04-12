@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-  
+    "memory-cache": "^0.2.0"
   }
 }

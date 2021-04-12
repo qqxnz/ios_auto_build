@@ -1,5 +1,6 @@
 {
     "repository": "git@gitlab.xiaoenai.net:ios/iloving.git",
     "brach": "develop",
-    "loop_seconds": 60
+    "shell":"fastlane mzd_inhouse ci_proj:iloving-beta",
+    "loop_seconds": 10
 }

@@ -22,7 +22,7 @@ function buildName(){
 
 //检查配置文件
 if(!config.loadfile(`${buildName()}.json`)){
-    throw new Error(`未检查到配置文件:${config.fileName()}`);
+    throw new Error(`未检查到配置文件:${config.fileName}`);
     return;
 }
 
@@ -32,11 +32,11 @@ workspace.setName(buildName());
 function buildStart(){
 
     print('检查是否在打包中~');
-    if(lock.islock()){
+    if(lock.islock(config.fileName)){
         print('检查上次打包是否超时~');
-        if(lock.isTimeOut()){
+        if(lock.isTimeOut(config.fileName)){
             print('上次打包超时，删除lockfile');
-            lock.unlock();
+            lock.unlock(config.fileName);
         }else{
             print('正在打包中，本次不执行操作~~~~~~~');
             return;    
@@ -76,10 +76,18 @@ if(!workspace.exists()){
 
     print('开始上锁并打包~~~~');
 
-    lock.lock();
+    lock.lock(config.fileName);
+
+    //脚本
+    var shell = config.get('shell');
+    var shellArray = shell.split(' ');
+    var sh = shellArray[0];
+    shellArray.splice(0,1);
+    print('shell:' + shell);
+
 
     const { spawn } = require('child_process');
-    const fastlane = spawn('fastlane', ['mzd_inhouse','ci_proj:xiaoenai-inhouse']);
+    const fastlane = spawn(sh, shellArray);
 
     fastlane.stdout.on('data', (data) => {
         logs.write(`${bulidID}`,data);
@@ -94,7 +102,7 @@ if(!workspace.exists()){
         print(`打包进程退出，退出码 ${code}`);
         var lastBuildCommit = commit.lastCommit;
         commit.saveLastBuildcommit(lastBuildCommit);
-        lock.unlock();
+        lock.unlock(config.fileName);
     });
 
 }
@@ -108,5 +116,14 @@ function print(obj){
 }
    
 
+//启动
 buildStart();
 
+var seconds = config.get('loop_seconds');
+
+print('打包循环检查时间:' + seconds);
+
+setInterval(function(){
+    //定时循环启动
+    buildStart();
+},seconds * 1000);
