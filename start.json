@@ -7,14 +7,25 @@
     */
     "apps" : [
         {
-            "name": "iloving-inhouse",//程序名称
+            "name": "httpServer",//下载界面服务
+            "script":"http-server ./www -a 0.0.0.0 -p 80",//启动命令
+            "out_file":"./_logs/_out.log",
+            "error_file": "./_logs/_error.log",
+        },
+        {
+            "name": "fileBrowser",//文件浏览服务
+            "script":"http-server ./workspace -a 0.0.0.0 -p 8080",//启动命令
+            "out_file":"./_logs/_out.log",
+            "error_file": "./_logs/_error.log",
+        },
+        {
+            "name": "iloving-inhouse",//打包模块名称
             "max_memory_restart":"500M",// 监控内存，一旦内存超过设定大小，自动重启
-            "script":"./main.js",
+            "script":"./main.js",//启动文件
             "args": "-config:iloving-inhouse",//配置文件,与comfig目录中的json匹配
             "out_file":"./_logs/_out.log",
             "error_file": "./_logs/_error.log",
             "max_restarts":30 ,
-            "instances":1,
             "watch": [  // 监控变化的目录，一旦变化，自动重启
             "config",
             "func",
