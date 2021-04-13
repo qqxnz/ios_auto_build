@@ -8,13 +8,13 @@
     "apps" : [
         {
             "name": "httpServer",//下载界面服务
-            "script":"http-server ./www -a 0.0.0.0 -p 8000",//启动命令
+            "script":"http-server ./www -a 0.0.0.0 -p 8000 -S -C ./cert/cert.pem -K ./cert/key.pem",//启动命令
             "out_file":"./_logs/_out.log",
             "error_file": "./_logs/_error.log",
         },
         {
             "name": "fileBrowser",//文件浏览服务
-            "script":"http-server ./workspace -a 0.0.0.0 -p 9000",//启动命令
+            "script":"http-server ./workspace -a 0.0.0.0 -p 9000 -S -C ./cert/cert.pem -K ./cert/key.pem",//启动命令
             "out_file":"./_logs/_out.log",
             "error_file": "./_logs/_error.log",
         },
