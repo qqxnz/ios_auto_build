@@ -101,8 +101,10 @@ if(!workspace.exists()){
 
     fastlane.on('close', (code) => {
         print(`打包进程退出，退出码 ${code}`);
-        var lastBuildCommit = commit.lastCommit();
-        commit.saveLastBuildcommit(config.fileName,lastBuildCommit);
+        if(code == 0){
+            var lastBuildCommit = commit.lastCommit();
+            commit.saveLastBuildcommit(config.fileName,lastBuildCommit);
+        }
         lock.unlock(config.fileName);
     });
 
@@ -113,7 +115,14 @@ if(!workspace.exists()){
 
 //控制台输出
 function print(obj){
-    console.log('###IOSBuild:'+ obj);
+    var date = new Date();
+	var day = 	date.getDate();
+	var month = date.getMonth()+ 1;
+	var year = date.getUTCFullYear();
+	var hours = date.getHours();
+	var minutes = date.getMinutes();
+	var seconds = date.getSeconds()
+    console.log(hours + ':' + minutes + ':' + seconds + '#IOSBuild:' + obj);
 }
    
 
