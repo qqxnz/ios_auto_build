@@ -29,7 +29,7 @@ console.log(conf.版本号);
 //更新缓存
 config.loadfile = function(fileName){
 	this.fileName = fileName;
-	var path = './config/' + fileName;
+	var path = './www/config/' + fileName;
 	if(!fs.existsSync(path)){
 		return false;
 	}

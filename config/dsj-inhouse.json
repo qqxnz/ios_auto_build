@@ -1,6 +1,0 @@
-{
-    "repository": "git@gitlab.xiaoenai.net:danshenji/ios/dsj.git",
-    "branch": "develop",
-    "shell":"fastlane mzd_inhouse ci_proj:dsj-inhouse",
-    "loop_seconds": 45
-}

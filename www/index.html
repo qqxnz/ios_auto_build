@@ -1,18 +1,45 @@
+<!DOCTYPE html>
 <html>
-
 <head>
-<title>ios</title>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    Fore more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+  -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="fw">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>fw</title>
+  <link rel="manifest" href="manifest.json">
 </head>
-
 <body>
-<p>分隔---------——</p>
-<a href="itms-services://?action=download-manifest&url=https://ios.xiaoenai.net:9000/iloving-inhouse/build/manifest.plist">小恩爱下载</a>
-<p>分隔---------——</p>
-<a href="https://ios.xiaoenai.net:9000/iloving-inhouse/build/description.html">小恩爱提交信息</a>
-<p>分隔---------——</p>
-<a href="itms-services://?action=download-manifest&url=https://ios.xiaoenai.net:9000/dsj-inhouse/build/manifest.plist">单身记下载</a>
-<p>分隔---------——</p>
-<a href="https://ios.xiaoenai.net:9000/dsj-inhouse/build/description.html">单身记提交信息</a>
+  <!-- This script installs service_worker.js to provide PWA functionality to
+       application. For more information, see:
+       https://developers.google.com/web/fundamentals/primers/service-workers -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('flutter-first-frame', function () {
+        navigator.serviceWorker.register('flutter_service_worker.js?v=720882869');
+      });
+    }
+  </script>
+  <script src="main.dart.js" type="application/javascript"></script>
 </body>
-
 </html>

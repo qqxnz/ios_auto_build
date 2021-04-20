@@ -1,0 +1,7 @@
+{
+    "name":"小恩爱[测试版]",
+    "repository":"git@gitlab.xiaoenai.net:ios/iloving.git",
+    "branch":"develop",
+    "shell":"fastlane mzd_inhouse ci_proj:iloving-inhouse ipa_url:https://ios.xiaoenai.net:9000 build_path:build",
+    "loop_seconds":60
+}
