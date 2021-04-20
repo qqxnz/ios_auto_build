@@ -1,0 +1,7 @@
+{
+    "name":"单身记[测试版]",
+    "repository": "git@gitlab.xiaoenai.net:danshenji/ios/dsj.git",
+    "branch": "develop",
+    "shell":"fastlane mzd_inhouse ci_proj:dsj-inhouse ipa_url:https://ios.xiaoenai.net:9000 build_path:build",
+    "loop_seconds": 45
+}
